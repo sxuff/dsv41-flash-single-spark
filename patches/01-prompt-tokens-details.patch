@@ -1,0 +1,25 @@
+diff --git a/packs/1.55bpw-rexl3/scripts/serve.sh b/packs/1.55bpw-rexl3/scripts/serve.sh
+index 3cd962a..eb1709a 100755
+--- a/packs/1.55bpw-rexl3/scripts/serve.sh
++++ b/packs/1.55bpw-rexl3/scripts/serve.sh
+@@ -66,7 +66,7 @@ if [ "$DRY_RUN" = "1" ]; then
+   echo "  --linear-backend tilelang --moe-backend tilelang --jit-monitor-mode warn \\"
+   echo "  --compilation-config {\"cudagraph_mode\":\"$CG_MODE\",...,\"cudagraph_capture_sizes\":[$CAPTURE_SIZES]} \\"
+   echo "  --speculative-config {\"method\":\"dspark\",\"num_speculative_tokens\":$MTP_K,...} \\"
+-  echo "  --reasoning-parser deepseek_v41 --tool-call-parser deepseek_v41 --enable-auto-tool-choice \\"
++  echo "  --reasoning-parser deepseek_v41 --tool-call-parser deepseek_v41 --enable-auto-tool-choice --enable-prompt-tokens-details \\"
+   echo "  --long-prefill-token-threshold $LPT --async-scheduling --no-scheduler-reserve-full-isl \\"
+   if [ "$VISION_IMAGES" = "0" ]; then MMDRY="--language-model-only"; else MMDRY="--limit-mm-per-prompt {\"image\": $VISION_IMAGES}"; fi
+   echo "  --no-enable-flashinfer-autotune $MMDRY --mm-processor-cache-gb 0 \\"
+diff --git a/packs/1.55bpw-rexl3/scripts/serve_inner.sh b/packs/1.55bpw-rexl3/scripts/serve_inner.sh
+index 5da1d45..f9ec1f4 100755
+--- a/packs/1.55bpw-rexl3/scripts/serve_inner.sh
++++ b/packs/1.55bpw-rexl3/scripts/serve_inner.sh
+@@ -78,6 +78,7 @@ exec vllm serve "$MODEL_DIR" \
+     --reasoning-parser deepseek_v41 \
+     --tool-call-parser deepseek_v41 \
+     --enable-auto-tool-choice \
++    --enable-prompt-tokens-details \
+     --long-prefill-token-threshold "$LPT" \
+     --async-scheduling \
+     --no-scheduler-reserve-full-isl \
