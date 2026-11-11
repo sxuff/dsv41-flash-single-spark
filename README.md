@@ -3,7 +3,7 @@
 ## Run it
 
 ```bash
-git clone https://github.com/sxuff/dsv41-flash-single-gb10 && cd dsv41-flash-single-gb10 && ./run.sh
+git clone https://github.com/sxuff/dsv41-flash-single-spark && cd dsv41-flash-single-spark && ./run.sh
 ```
 
 Expected: **22.0 and 20.5 tok/s** on real agent requests at the server's 0.6 / 0.95 sampling, **802 and 700 tok/s** prefill on real 20K to 30K prompts (two boots) — receipt: [`results/dsv41-gx10-20261106.json`](results/dsv41-gx10-20261106.json), runs `s-k5a` and `s-k5b`

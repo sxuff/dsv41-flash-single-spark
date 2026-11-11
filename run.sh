@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # run.sh - one-command setup and launch for this recipe on one NVIDIA GB10.
 #
-#   git clone https://github.com/sxuff/dsv41-flash-single-gb10 && cd dsv41-flash-single-gb10 && ./run.sh
+#   git clone https://github.com/sxuff/dsv41-flash-single-spark && cd dsv41-flash-single-spark && ./run.sh
 #
 # Every pin and flag below is copied from this repo's README, patches or
 # receipts, or from upstream at the pinned commit; the comment next to each value
@@ -11,11 +11,11 @@ cd "$(dirname "$0")"
 REPO_DIR="$(pwd)"
 
 # ===================== recipe config (per repo) =============================
-RECIPE_NAME="dsv41-flash-single-gb10"
+RECIPE_NAME="dsv41-flash-single-spark"
 PORT="${PORT:-8000}"                             # upstream scripts/env.sh API_PORT (default 8000); serve.sh publishes it with docker -p
 MODELS_DIR="${MODELS_DIR:-$HOME/models}"         # upstream scripts/env.sh MODELS_DIR
 SRC_DIR="${SRC_DIR:-$HOME/src}"
-STATE_DIR="${STATE_DIR:-$HOME/.local/state/dsv41-flash-single-gb10}"
+STATE_DIR="${STATE_DIR:-$HOME/.local/state/dsv41-flash-single-spark}"
 NEEDS_TOOLS="git curl sha256sum docker python3 nvidia-smi ss numfmt zstd sudo"   # zstd: upstream scripts/fetch_base.sh
 # Not an upstream number: the measured boots started with 113.7 to 114 GiB available (README "How far to
 # trust these"), and below 100 GiB the planner would put far more experts on the SSD than was measured.
